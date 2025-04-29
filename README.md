@@ -76,7 +76,7 @@ web_crawler/
 1. **Clone the Repository**:
 
    ```bash
-   git clone <repository_url>
+   git clone https://github.com/sameeramjad07/Web-Crawler.git
    ```
 
 2. **Create a Virtual Environment**:
