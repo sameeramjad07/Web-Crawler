@@ -22,47 +22,47 @@ Tracks key metrics: Execution time, pages crawled, pages per second, and speedup
 
 ## Project Structure
 
+```text
 web_crawler/
 ├── output/
-│ ├── analyze/
-│ │ ├── comparison/
-│ │ │ ├── comparison_metrics.json
-│ │ │ ├── depth_distribution_comparison.png
-│ │ │ ├── execution_time_comparison.png
-│ │ │ ├── pages_per_second_comparison.png
-│ │ │ ├── word_cloud_comparison.png
-│ │ ├── results_parallel.json
-│ │ ├── results_sequential.json
-│ ├── parallel - threads/
-│ │ ├── depth_distribution.png
-│ │ ├── results.json
-│ │ ├── time_vs_pages.png
-│ │ ├── word_cloud.png
-│ ├── sequential/
-│ │ ├── depth_distribution.png
-│ │ ├── sequential_results.json
-│ │ ├── time_vs_pages.png
-│ │ ├── word_cloud.png
+│   ├── analyze/
+│   │   ├── comparison/
+│   │   │   ├── comparison_metrics.json
+│   │   │   ├── depth_distribution_comparison.png
+│   │   │   ├── execution_time_comparison.png
+│   │   │   ├── pages_per_second_comparison.png
+│   │   │   ├── word_cloud_comparison.png
+│   │   ├── results_parallel.json
+│   │   ├── results_sequential.json
+│   ├── parallel - threads/
+│   │   ├── depth_distribution.png
+│   │   ├── results.json
+│   │   ├── time_vs_pages.png
+│   │   ├── word_cloud.png
+│   ├── sequential/
+│   │   ├── depth_distribution.png
+│   │   ├── sequential_results.json
+│   │   ├── time_vs_pages.png
+│   │   ├── word_cloud.png
 ├── parallel - mpi/
-│ ├── **pycache**/
-│ ├── config.py
-│ ├── main.py
+│   ├── __pycache__/
+│   ├── config.py
+│   ├── main.py
 ├── parallel - threads/
-│ ├── **pycache**/
-│ ├── config.py
-│ ├── main.py
+│   ├── __pycache__/
+│   ├── config.py
+│   ├── main.py
 ├── sequential/
-│ ├── **pycache**/
-│ ├── config.py
-│ ├── main.py
-├── venv/
+│   ├── __pycache__/
+│   ├── config.py
+│   ├── main.py
+├── venv/ (needs to be created)
 ├── .gitignore
 ├── analyze.py
 ├── README.md
 ├── requirements.txt
 ├── test.py
-
-````
+```
 
 ## Prerequisites
 
@@ -70,49 +70,42 @@ web_crawler/
 - **MPI Implementation**: Required for the MPI-based crawler (`parallel - mpi/main.py`).
 
   - **Windows**: Install MS-MPI or use WSL with MPICH/OpenMPI.
-  - **Ubuntu**: `sudo apt-get install mpich` or `sudo apt-get install openmpi-bin`
-  - **macOS**: `brew install mpich` or `brew install openmpi`
 
 ## Setup Instructions
 
 1. **Clone the Repository**:
 
-    ```bash
-    git clone <repository_url>
-    ```
+   ```bash
+   git clone <repository_url>
+   ```
 
 2. **Create a Virtual Environment**:
 
-    ```bash
-    python -m venv venv
-    ```
+   ```bash
+   python -m venv venv
+   ```
 
 3. **Activate the Virtual Environment**:
 
-    - Windows (PowerShell):
+   - Windows (PowerShell):
 
-      ```bash
-      .\venv\Scripts\activate
-      ```
-
-    - Unix/macOS:
-
-      ```bash
-      source venv/bin/activate
-      ```
+     ```bash
+     .\venv\Scripts\activate
+     ```
 
 4. **Install Dependencies**:
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-    Installed packages include:
-    - `requests==2.31.0`
-    - `beautifulsoup4==4.12.3`
-    - `matplotlib==3.8.2`
-    - `wordcloud==1.9.3`
-    - `mpi4py==4.0.0`
+   Installed packages include:
+
+   - `requests`
+   - `beautifulsoup4`
+   - `matplotlib`
+   - `wordcloud`
+   - `mpi4py==4.0.0` (not implemented at the moment)
 
 ## Usage
 
@@ -122,21 +115,21 @@ Ensure the virtual environment is activated.
 
 - **Sequential Crawler**:
 
-    ```bash
-    python .\sequential\main.py
-    ```
+  ```bash
+  python .\sequential\main.py
+  ```
 
 - **Multi-threaded Crawler**:
 
-    ```bash
-    python '.\parallel - threads\main.py'
-    ```
+  ```bash
+  python '.\parallel - threads\main.py'
+  ```
 
 - **MPI Distributed Crawler** (e.g., 1 master + 4 workers = 5 processes):
 
-    ```bash
-    mpirun -np 5 python '.\parallel - mpi\main.py'
-    ```
+  ```bash
+  mpirun -np 5 python '.\parallel - mpi\main.py'
+  ```
 
 ### Comparing Crawlers with `analyze.py`
 
@@ -144,7 +137,7 @@ Run the analysis:
 
 ```bash
 python .\analyze.py
-````
+```
 
 It performs:
 
