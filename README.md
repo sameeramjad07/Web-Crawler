@@ -128,7 +128,7 @@ Ensure the virtual environment is activated.
 - **MPI Distributed Crawler** (e.g., 1 master + 4 workers = 5 processes):
 
   ```bash
-  mpirun -np 5 python '.\parallel - mpi\main.py'
+  mpiexec -n 4 python '.\parallel - mpi\main.py'
   ```
 
 ### Comparing Crawlers with `analyze.py`
