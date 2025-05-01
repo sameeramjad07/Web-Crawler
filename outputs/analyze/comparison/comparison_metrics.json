@@ -1,0 +1,13 @@
+{
+    "Sequential": {
+        "pages_crawled": 50,
+        "execution_time": 41.89573287963867,
+        "pages_per_second": 1.193438962952239
+    },
+    "Parallel": {
+        "pages_crawled": 50,
+        "execution_time": 11.482998132705688,
+        "pages_per_second": 4.354263531367371
+    },
+    "speedup": 3.648501235954391
+}
