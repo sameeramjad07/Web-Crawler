@@ -58,8 +58,11 @@ web_crawler/
 │   ├── main.py
 ├── venv/ (needs to be created)
 ├── .gitignore
+├── MPI_Crawler_Report.md
 ├── analyze.py
 ├── README.md
+├── report.md
+├── report_final.md
 ├── requirements.txt
 ├── test.py
 ```
