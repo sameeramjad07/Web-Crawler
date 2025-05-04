@@ -27,7 +27,7 @@ class CrawlerConfig:
                        'h1', 
                        'meta_description']
     OUTPUT_DIR = "outputs/analyze"
-    NUM_THREADS = 4  # For parallel crawler
+    NUM_THREADS = 3  # For parallel crawler
 
 class SequentialCrawler:
     """Minimal sequential web crawler."""

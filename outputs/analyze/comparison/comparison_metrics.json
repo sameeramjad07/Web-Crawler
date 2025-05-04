@@ -1,13 +1,13 @@
 {
     "Sequential": {
         "pages_crawled": 50,
-        "execution_time": 31.08383560180664,
-        "pages_per_second": 1.6085530962303096
+        "execution_time": 30.65200138092041,
+        "pages_per_second": 1.6312148553902555
     },
     "Parallel (Threads)": {
         "pages_crawled": 50,
-        "execution_time": 9.135506868362427,
-        "pages_per_second": 5.473150063863144
+        "execution_time": 11.403589010238647,
+        "pages_per_second": 4.384584533440111
     },
     "Parallel (MPI)": {
         "pages_crawled": 50,
@@ -15,9 +15,9 @@
         "pages_per_second": 4.666939526722512
     },
     "speedups": {
-        "thread_speedup": 3.4025299361827894,
-        "mpi_speedup": 2.901327620244317,
-        "mpi_vs_thread": 0.852697162012112
+        "thread_speedup": 2.6879258234753713,
+        "mpi_speedup": 2.86102073635541,
+        "mpi_vs_thread": 1.0643972059676239
     },
     "mpi_worker_metrics": {
         "1": {
