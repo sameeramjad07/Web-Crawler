@@ -43,16 +43,17 @@ The MPI implementation incorporates sophisticated load balancing mechanisms and 
 ### 3.4 Performance Visualizations
 
 **[Figure 1: Execution Time Comparison]**
-*[Placeholder for bar chart comparing execution times across implementations]*
+![*\[Placeholder for bar chart comparing execution times across implementations\]*](outputs/analyze/comparison/execution_time_comparison.png)
 
 **[Figure 2: Speedup Analysis]**
-*[Placeholder for speedup comparison chart]*
+![*\[Placeholder for speedup comparison chart\]*](outputs/analyze/comparison/speedup_comparison.png)
 
 **[Figure 3: Worker Utilization]**
-*[Placeholder for worker utilization chart showing idle vs. busy time]*
+![*\[Placeholder for worker utilization chart showing idle vs. busy time\]*](outputs/analyze/comparison/mpi_worker_distribution.png)
+![mpi_worker_avg_time](outputs/analyze/comparison/mpi_worker_avg_time.png)
 
 **[Figure 4: Crawl Rate Over Time]**
-*[Placeholder for line chart showing pages/second over time]*
+![*\[Placeholder for line chart showing pages/second over time\]*](outputs/analyze/comparison/mpi_crawl_rate_time.png)
 
 ## 4. Design Trade-offs and Analysis
 
@@ -143,11 +144,13 @@ These mechanisms add overhead but ensure robustness against common web crawling 
 
 ### 5.1 Speedup and Efficiency
 
-**[Figure 5: Speedup vs. Number of Workers]**
-*[Placeholder for chart showing how speedup scales with increasing workers]*
+**[Figure 5: Speedup Comparison]**
+![*\[Placeholder for chart showing how speedup scales with increasing workers\]*](outputs/analyze/comparison/speedup_comparison.png)
+**[Figure 6: Speedup vs. Number of Workers: MPI]**
+![Speedup MPI](<outputs/parallel - mpi/speedup.png>)
 
-**[Figure 6: Efficiency vs. Number of Workers]**
-*[Placeholder for chart showing how efficiency (speedup/workers) changes with scale]*
+**[Figure 7: Efficiency vs. Number of Workers: MPI]**
+![*\[Placeholder for chart showing how efficiency (speedup/workers) changes with scale\]*](<outputs/parallel - mpi/efficiency.png>)
 
 ### 5.2 Amdahl's Law Analysis
 
