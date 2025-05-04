@@ -210,6 +210,7 @@ The fact that all workers achieved a 100% success rate (0 error counts in worker
 
 **[Figure 5: Speedup Comparison]**
 ![*\[Placeholder for chart showing how speedup scales with increasing workers\]*](outputs/analyze/comparison/speedup_comparison.png)
+
 **[Figure 6: Speedup vs. Number of Workers: MPI]**
 ![Speedup MPI](<outputs/parallel - mpi/speedup.png>)
 
