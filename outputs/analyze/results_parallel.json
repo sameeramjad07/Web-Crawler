@@ -14,6 +14,15 @@
         "meta_description": "Platform to practice programming problems. Solve company interview questions and improve your coding intellect"
     },
     {
+        "url": "https://www.geeksforgeeks.org/c-plus-plus/",
+        "depth": 1,
+        "title": "C++ Programming Language | GeeksforGeeks",
+        "h1": [
+            "C++ Programming Language"
+        ],
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
+    },
+    {
         "url": "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/",
         "depth": 1,
         "title": "DSA Tutorial \u2013 Learn Data Structures and Algorithms | GeeksforGeeks",
@@ -32,29 +41,11 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/c-plus-plus/",
-        "depth": 1,
-        "title": "C++ Programming Language | GeeksforGeeks",
-        "h1": [
-            "C++ Programming Language"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
         "url": "https://www.geeksforgeeks.org/java/",
         "depth": 1,
         "title": "Java Tutorial | GeeksforGeeks",
         "h1": [
             "Java Tutorial"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
-        "url": "https://www.geeksforgeeks.org/machine-learning/",
-        "depth": 1,
-        "title": "Machine Learning Tutorial | GeeksforGeeks",
-        "h1": [
-            "Machine Learning Tutorial"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -68,11 +59,11 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/python-programming-language/",
+        "url": "https://www.geeksforgeeks.org/machine-learning/",
         "depth": 1,
-        "title": "Python Tutorial | Learn Python Programming Language | GeeksforGeeks",
+        "title": "Machine Learning Tutorial | GeeksforGeeks",
         "h1": [
-            "Python Tutorial | Learn Python Programming Language"
+            "Machine Learning Tutorial"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -86,11 +77,11 @@
         "meta_description": "Master new skills and advance your career with our comprehensive online courses. Explore a wide range of topics, from DS & Algorithms to Data Science. Learn from industry experts and gain practical knowledge at your own pace."
     },
     {
-        "url": "https://www.geeksforgeeks.org/linux-tutorial/",
+        "url": "https://www.geeksforgeeks.org/python-programming-language/",
         "depth": 1,
-        "title": "Linux/Unix Tutorial | GeeksforGeeks",
+        "title": "Python Tutorial | Learn Python Programming Language | GeeksforGeeks",
         "h1": [
-            "Linux/Unix Tutorial"
+            "Python Tutorial | Learn Python Programming Language"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -104,11 +95,11 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/sql-tutorial/",
+        "url": "https://www.geeksforgeeks.org/linux-tutorial/",
         "depth": 1,
-        "title": "SQL Tutorial | GeeksforGeeks",
+        "title": "Linux/Unix Tutorial | GeeksforGeeks",
         "h1": [
-            "SQL Tutorial"
+            "Linux/Unix Tutorial"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -118,6 +109,15 @@
         "title": "Web Development | GeeksforGeeks",
         "h1": [
             "Web Development"
+        ],
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
+    },
+    {
+        "url": "https://www.geeksforgeeks.org/sql-tutorial/",
+        "depth": 1,
+        "title": "SQL Tutorial | GeeksforGeeks",
+        "h1": [
+            "SQL Tutorial"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -158,6 +158,13 @@
         "meta_description": "Looking to become a full-stack developer? This live, online course with a focus on the popular JS library React for front-end and Node.js for back-end along with APIs and deployment is a must-have program for any aspiring developer"
     },
     {
+        "url": "https://www.geeksforgeeks.org/explore?page=1&sortBy=submissions",
+        "depth": 1,
+        "title": "Practice | GeeksforGeeks | A computer science portal for geeks",
+        "h1": [],
+        "meta_description": "Platform to practice programming problems. Solve company interview questions and improve your coding intellect"
+    },
+    {
         "url": "https://www.geeksforgeeks.org/courses/data-science-live",
         "depth": 1,
         "title": "Complete Machine Learning & Data Science Program",
@@ -165,13 +172,6 @@
             "Complete Machine Learning & Data Science Program"
         ],
         "meta_description": "Master Data Science and Machine Learning with GeeksforGeeks' comprehensive 6-month live Data Science program. Perfect for tech enthusiasts, students, and professionals, this Data Science live course covers Python, deep learning, AI, and more. Gain hands-on experience with 40+ industry projects and 20+ programming tools. Join now to elevate your career and become a data science expert!"
-    },
-    {
-        "url": "https://www.geeksforgeeks.org/explore?page=1&sortBy=submissions",
-        "depth": 1,
-        "title": "Practice | GeeksforGeeks | A computer science portal for geeks",
-        "h1": [],
-        "meta_description": "Platform to practice programming problems. Solve company interview questions and improve your coding intellect"
     },
     {
         "url": "https://www.geeksforgeeks.org/ai-ml-ds/",
@@ -208,15 +208,6 @@
         "meta_description": "Why do Professionals in Software Engineering often struggle to create efficient and scalable systems?Well, the solution lies in integrating DSA principles effectively into real-world System Design scenarios. If you want to learn this in order to crack the Tech Giants, register now!!!"
     },
     {
-        "url": "https://www.geeksforgeeks.org/courses/Java-backend-live/",
-        "depth": 1,
-        "title": "JAVA Backend Development - Live",
-        "h1": [
-            "JAVA Backend Development - Live"
-        ],
-        "meta_description": "The JAVA Backend Development - Live course is designed to teach you how to build powerful and efficient backend systems using Java. This extensive Java Backend Development course is a 12-week guided program to equip you with the right skills and make you interview-ready. Not only this, get hands-on experience in building web apps like e-wallets, movie ticket booking, etc."
-    },
-    {
         "url": "https://www.geeksforgeeks.org/geeksforgeeks-premium-subscription",
         "depth": 1,
         "title": "Premium - GeeksforGeeks",
@@ -225,6 +216,15 @@
             "Frequently asked questions"
         ],
         "meta_description": "Platform to practice programming problems. Solve company interview questions and improve your coding intellect"
+    },
+    {
+        "url": "https://www.geeksforgeeks.org/courses/Java-backend-live/",
+        "depth": 1,
+        "title": "JAVA Backend Development - Live",
+        "h1": [
+            "JAVA Backend Development - Live"
+        ],
+        "meta_description": "The JAVA Backend Development - Live course is designed to teach you how to build powerful and efficient backend systems using Java. This extensive Java Backend Development course is a 12-week guided program to equip you with the right skills and make you interview-ready. Not only this, get hands-on experience in building web apps like e-wallets, movie ticket booking, etc."
     },
     {
         "url": "https://www.geeksforgeeks.org/courses/full-stack-node/",
@@ -245,20 +245,20 @@
         "meta_description": "Learn Java programming with our comprehensive Java online course! Perfect for beginners and professionals, this complete Java course covers basics to advanced Java topics, helping you build a strong foundation in Java development. Start your journey to becoming a skilled Java programmer."
     },
     {
+        "url": "https://www.geeksforgeeks.org/courses/cpp-programming-basic-to-advanced/",
+        "depth": 1,
+        "title": "C++ Programming Course Online - Complete Beginner to Advanced",
+        "h1": [
+            "C++ Programming Course Online - Complete Beginner to Advanced"
+        ],
+        "meta_description": "Master C++ programming with our comprehensive course, from beginner to advanced levels. Perfect for aspiring developers, this online CPP course covers everything from basic syntax to STL libraries & complex algorithms, helping you build a strong foundation in C++."
+    },
+    {
         "url": "https://www.geeksforgeeks.org/complete-guide-on-complexity-analysis/",
         "depth": 1,
         "title": "Complete Guide On Complexity Analysis \u2013 Data Structure and Algorithms Tutorial | GeeksforGeeks",
         "h1": [
             "Complete Guide On Complexity Analysis \u2013 Data Structure and Algorithms Tutorial"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
-        "url": "https://www.geeksforgeeks.org/data-structures/linked-list/",
-        "depth": 1,
-        "title": "Linked List Data Structure | GeeksforGeeks",
-        "h1": [
-            "Linked List Data Structure"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -272,13 +272,13 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/courses/cpp-programming-basic-to-advanced/",
+        "url": "https://www.geeksforgeeks.org/data-structures/linked-list/",
         "depth": 1,
-        "title": "C++ Programming Course Online - Complete Beginner to Advanced",
+        "title": "Linked List Data Structure | GeeksforGeeks",
         "h1": [
-            "C++ Programming Course Online - Complete Beginner to Advanced"
+            "Linked List Data Structure"
         ],
-        "meta_description": "Master C++ programming with our comprehensive course, from beginner to advanced levels. Perfect for aspiring developers, this online CPP course covers everything from basic syntax to STL libraries & complex algorithms, helping you build a strong foundation in C++."
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
         "url": "https://www.geeksforgeeks.org/searching-algorithms/",
@@ -299,15 +299,6 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/queue-data-structure/",
-        "depth": 1,
-        "title": "Queue Data Structure | GeeksforGeeks",
-        "h1": [
-            "Queue Data Structure"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
         "url": "https://www.geeksforgeeks.org/stack-data-structure/",
         "depth": 1,
         "title": "Stack Data Structure | GeeksforGeeks",
@@ -317,20 +308,20 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
+        "url": "https://www.geeksforgeeks.org/queue-data-structure/",
+        "depth": 1,
+        "title": "Queue Data Structure | GeeksforGeeks",
+        "h1": [
+            "Queue Data Structure"
+        ],
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
+    },
+    {
         "url": "https://www.geeksforgeeks.org/graph-data-structure-and-algorithms/",
         "depth": 1,
         "title": "Graph  Algorithms | GeeksforGeeks",
         "h1": [
             "Graph  Algorithms"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
-        "url": "https://www.geeksforgeeks.org/data-science-tutorial/",
-        "depth": 1,
-        "title": "Learn Data Science Tutorial With Python | GeeksforGeeks",
-        "h1": [
-            "Learn Data Science Tutorial With Python"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -362,6 +353,15 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
+        "url": "https://www.geeksforgeeks.org/data-science-tutorial/",
+        "depth": 1,
+        "title": "Learn Data Science Tutorial With Python | GeeksforGeeks",
+        "h1": [
+            "Learn Data Science Tutorial With Python"
+        ],
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
+    },
+    {
         "url": "https://www.geeksforgeeks.org/natural-language-processing-nlp-tutorial/",
         "depth": 1,
         "title": "Natural Language Processing (NLP) Tutorial | GeeksforGeeks",
@@ -389,20 +389,20 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/javascript/",
-        "depth": 1,
-        "title": "JavaScript Tutorial | GeeksforGeeks",
-        "h1": [
-            "JavaScript Tutorial"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
         "url": "https://www.geeksforgeeks.org/html-tutorial/",
         "depth": 1,
         "title": "HTML Tutorial | GeeksforGeeks",
         "h1": [
             "HTML Tutorial"
+        ],
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
+    },
+    {
+        "url": "https://www.geeksforgeeks.org/javascript/",
+        "depth": 1,
+        "title": "JavaScript Tutorial | GeeksforGeeks",
+        "h1": [
+            "JavaScript Tutorial"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
@@ -425,20 +425,20 @@
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     },
     {
-        "url": "https://www.geeksforgeeks.org/nodejs/",
-        "depth": 1,
-        "title": "Node.js Tutorial | GeeksforGeeks",
-        "h1": [
-            "Node.js Tutorial"
-        ],
-        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
-    },
-    {
         "url": "https://www.geeksforgeeks.org/django-tutorial/",
         "depth": 1,
         "title": "Django Tutorial | Learn Django Framework | GeeksforGeeks",
         "h1": [
             "Django Tutorial | Learn Django Framework"
+        ],
+        "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
+    },
+    {
+        "url": "https://www.geeksforgeeks.org/nodejs/",
+        "depth": 1,
+        "title": "Node.js Tutorial | GeeksforGeeks",
+        "h1": [
+            "Node.js Tutorial"
         ],
         "meta_description": "Your All-in-One Learning Portal: GeeksforGeeks is a comprehensive educational platform that empowers learners across domains-spanning computer science and programming, school education, upskilling, commerce, software tools, competitive exams, and more."
     }
