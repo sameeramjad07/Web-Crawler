@@ -1,0 +1,53 @@
+{
+    "pages_crawled": 50,
+    "execution_time": 10.713659286499023,
+    "pages_per_second": 4.666939526722512,
+    "worker_metrics": {
+        "1": {
+            "pages_processed": 21,
+            "success_count": 21,
+            "error_count": 0,
+            "total_processing_time": 10.378560066223145,
+            "avg_processing_time": 0.49421714601062594,
+            "idle_time": 0
+        },
+        "2": {
+            "pages_processed": 13,
+            "success_count": 13,
+            "error_count": 0,
+            "total_processing_time": 9.593620538711548,
+            "avg_processing_time": 0.737970810670119,
+            "idle_time": 0
+        },
+        "3": {
+            "pages_processed": 13,
+            "success_count": 13,
+            "error_count": 0,
+            "total_processing_time": 10.388246536254883,
+            "avg_processing_time": 0.7990958874042218,
+            "idle_time": 0
+        }
+    },
+    "queue_size_history": [
+        5214,
+        8735
+    ],
+    "worker_status_history": [
+        [
+            0,
+            3
+        ],
+        [
+            0,
+            3
+        ]
+    ],
+    "crawl_rate_history": [
+        5.199978427976454,
+        4.499987554584591
+    ],
+    "timestamp_history": [
+        5.000020742416382,
+        10.000027656555176
+    ]
+}

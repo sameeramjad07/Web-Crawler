@@ -1,0 +1,48 @@
+{
+    "Sequential": {
+        "pages_crawled": 50,
+        "execution_time": 31.08383560180664,
+        "pages_per_second": 1.6085530962303096
+    },
+    "Parallel (Threads)": {
+        "pages_crawled": 50,
+        "execution_time": 9.135506868362427,
+        "pages_per_second": 5.473150063863144
+    },
+    "Parallel (MPI)": {
+        "pages_crawled": 50,
+        "execution_time": 10.713659286499023,
+        "pages_per_second": 4.666939526722512
+    },
+    "speedups": {
+        "thread_speedup": 3.4025299361827894,
+        "mpi_speedup": 2.901327620244317,
+        "mpi_vs_thread": 0.852697162012112
+    },
+    "mpi_worker_metrics": {
+        "1": {
+            "pages_processed": 21,
+            "success_count": 21,
+            "error_count": 0,
+            "total_processing_time": 10.378560066223145,
+            "avg_processing_time": 0.49421714601062594,
+            "idle_time": 0
+        },
+        "2": {
+            "pages_processed": 13,
+            "success_count": 13,
+            "error_count": 0,
+            "total_processing_time": 9.593620538711548,
+            "avg_processing_time": 0.737970810670119,
+            "idle_time": 0
+        },
+        "3": {
+            "pages_processed": 13,
+            "success_count": 13,
+            "error_count": 0,
+            "total_processing_time": 10.388246536254883,
+            "avg_processing_time": 0.7990958874042218,
+            "idle_time": 0
+        }
+    }
+}

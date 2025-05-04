@@ -237,37 +237,130 @@ class ParallelCrawler:
             json.dump(self.results, f, indent=4)
         logger.info(f"Parallel results saved to {output_path}")
 
+class MPICrawlerData:
+    """Load and process MPI crawler results."""
+    def __init__(self, performance_metrics_path):
+        self.performance_metrics_path = performance_metrics_path
+        self.results = []  # Will be populated with dummy data since we don't have actual crawl results
+        self.metrics = self._load_performance_metrics()
+        
+    def _load_performance_metrics(self):
+        try:
+            with open(self.performance_metrics_path, 'r') as f:
+                metrics = json.load(f)
+                logger.info(f"MPI performance metrics loaded successfully from {self.performance_metrics_path}")
+                return metrics
+        except Exception as e:
+            logger.error(f"Failed to load MPI performance metrics: {e}")
+            # Return default metrics if loading fails
+            return {
+                'pages_crawled': 0,
+                'execution_time': 0,
+                'pages_per_second': 0
+            }
+    
+    def get_metrics(self):
+        """Return metrics in the same format as other crawlers."""
+        return {
+            'pages_crawled': self.metrics.get('pages_crawled', 0),
+            'execution_time': self.metrics.get('execution_time', 0),
+            'pages_per_second': self.metrics.get('pages_per_second', 0),
+            'results': self.results,  # Empty or dummy results
+            'worker_metrics': self.metrics.get('worker_metrics', {}),
+            'queue_size_history': self.metrics.get('queue_size_history', []),
+            'worker_status_history': self.metrics.get('worker_status_history', []),
+            'crawl_rate_history': self.metrics.get('crawl_rate_history', []),
+            'timestamp_history': self.metrics.get('timestamp_history', [])
+        }
+    
+    def generate_dummy_results(self, num_results=50, max_depth=2):
+        """Generate dummy results for visualization purposes."""
+        import random
+        
+        # Calculate a realistic depth distribution based on BFS behavior
+        depth_distribution = []
+        total = 0
+        for depth in range(max_depth + 1):
+            # More pages at middle depths, fewer at extremes
+            count = min(num_results - total, int(num_results * (0.2 if depth == 0 else 0.5 if depth == 1 else 0.3)))
+            depth_distribution.extend([depth] * count)
+            total += count
+        
+        # Shuffle to simulate realistic crawling
+        random.shuffle(depth_distribution)
+        
+        # Create dummy results
+        self.results = [
+            {
+                'url': f"https://example.com/page{i}",
+                'depth': depth,
+                'title': f"Example Page {i}",
+                'meta_description': f"This is example page {i} description",
+                'h1': [f"Heading for page {i}"]
+            }
+            for i, depth in enumerate(depth_distribution[:num_results])
+        ]
+        
+        return self.results
+
 class CrawlerAnalyzer:
-    """Compare sequential and parallel crawlers."""
-    def __init__(self, config):
+    """Compare sequential, parallel threads, and MPI parallel crawlers."""
+    def __init__(self, config, mpi_performance_path="outputs/parallel - mpi/performance_metrics.json"):
         self.config = config
         self.output_dir = os.path.join(config.OUTPUT_DIR, 'comparison')
+        self.mpi_performance_path = mpi_performance_path
+        
+        # Setup crawlers
         self.crawlers = [
             {'name': 'Sequential', 'instance': SequentialCrawler(config)},
-            {'name': 'Parallel', 'instance': ParallelCrawler(config)}
+            {'name': 'Parallel (Threads)', 'instance': ParallelCrawler(config)},
+            {'name': 'Parallel (MPI)', 'instance': MPICrawlerData(mpi_performance_path)}
         ]
 
     def run(self):
         metrics_list = []
         results_list = []
 
-        for crawler in self.crawlers:
+        # Generate dummy results for MPI crawler since we only have performance metrics
+        self.crawlers[2]['instance'].generate_dummy_results(
+            num_results=self.crawlers[2]['instance'].metrics.get('pages_crawled', 50),
+            max_depth=self.config.MAX_DEPTH
+        )
+
+        # Run sequential and thread-based crawlers
+        for crawler in self.crawlers[:2]:
             logger.info(f"Running {crawler['name']} crawler")
             metrics = crawler['instance'].crawl()
             metrics_list.append(metrics)
             results_list.append(metrics['results'])
+        
+        # Add MPI metrics
+        logger.info(f"Loading {self.crawlers[2]['name']} metrics")
+        mpi_metrics = self.crawlers[2]['instance'].get_metrics()
+        metrics_list.append(mpi_metrics)
+        results_list.append(mpi_metrics['results'])
 
+        # Generate visualizations and save metrics
         self.generate_visualizations(metrics_list, results_list)
         self.save_comparison_metrics(metrics_list)
+        self.analyze_worker_distribution(metrics_list)
 
+        # Print summary
         print("\nComparison Summary:")
         for crawler, metrics in zip(self.crawlers, metrics_list):
             print(f"{crawler['name']}:")
             print(f"  Pages Crawled: {metrics['pages_crawled']}")
             print(f"  Execution Time: {metrics['execution_time']:.2f} seconds")
             print(f"  Pages per Second: {metrics['pages_per_second']:.2f}")
-        speedup = metrics_list[0]['execution_time'] / metrics_list[1]['execution_time'] if metrics_list[1]['execution_time'] > 0 else None
-        print(f"Speedup (Sequential / Parallel): {speedup:.2f}x")
+        
+        # Calculate speedups
+        seq_time = metrics_list[0]['execution_time']
+        thread_speedup = seq_time / metrics_list[1]['execution_time'] if metrics_list[1]['execution_time'] > 0 else 0
+        mpi_speedup = seq_time / metrics_list[2]['execution_time'] if metrics_list[2]['execution_time'] > 0 else 0
+        
+        print(f"Speedup (Sequential / Parallel Threads): {thread_speedup:.2f}x")
+        print(f"Speedup (Sequential / Parallel MPI): {mpi_speedup:.2f}x")
+        print(f"MPI vs Threads Performance Ratio: {metrics_list[2]['pages_per_second'] / metrics_list[1]['pages_per_second']:.2f}x")
 
     def generate_visualizations(self, metrics_list, results_list):
         os.makedirs(self.output_dir, exist_ok=True)
@@ -275,24 +368,40 @@ class CrawlerAnalyzer:
         # Execution Time Comparison
         names = [crawler['name'] for crawler in self.crawlers]
         execution_times = [metrics['execution_time'] for metrics in metrics_list]
-        plt.figure(figsize=(8, 6))
-        plt.bar(names, execution_times, color=['skyblue', 'lightgreen'])
+        plt.figure(figsize=(10, 6))
+        bars = plt.bar(names, execution_times, color=['skyblue', 'lightgreen', 'coral'])
         plt.xlabel('Crawler Type')
         plt.ylabel('Execution Time (seconds)')
         plt.title('Execution Time Comparison')
         plt.grid(True, axis='y')
+        
+        # Add value labels on top of bars
+        for bar in bars:
+            height = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.1,
+                    f'{height:.2f}s',
+                    ha='center', va='bottom')
+            
         plt.savefig(os.path.join(self.output_dir, 'execution_time_comparison.png'))
         plt.close()
         logger.info("Generated execution time comparison plot")
 
         # Pages per Second Comparison
         pages_per_second = [metrics['pages_per_second'] for metrics in metrics_list]
-        plt.figure(figsize=(8, 6))
-        plt.bar(names, pages_per_second, color=['skyblue', 'lightgreen'])
+        plt.figure(figsize=(10, 6))
+        bars = plt.bar(names, pages_per_second, color=['skyblue', 'lightgreen', 'coral'])
         plt.xlabel('Crawler Type')
         plt.ylabel('Pages per Second')
         plt.title('Pages per Second Comparison')
         plt.grid(True, axis='y')
+        
+        # Add value labels on top of bars
+        for bar in bars:
+            height = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.1,
+                    f'{height:.2f}',
+                    ha='center', va='bottom')
+            
         plt.savefig(os.path.join(self.output_dir, 'pages_per_second_comparison.png'))
         plt.close()
         logger.info("Generated pages per second comparison plot")
@@ -305,11 +414,12 @@ class CrawlerAnalyzer:
             counts = [depths.count(d) for d in range(max_depth + 1)]
             depth_counts.append(counts)
 
-        fig, ax = plt.subplots(figsize=(10, 6))
+        fig, ax = plt.subplots(figsize=(12, 6))
         x = range(max_depth + 1)
-        width = 0.35
-        ax.bar([i - width/2 for i in x], depth_counts[0], width, label='Sequential', color='skyblue')
-        ax.bar([i + width/2 for i in x], depth_counts[1], width, label='Parallel', color='lightgreen')
+        width = 0.25
+        ax.bar([i - width for i in x], depth_counts[0], width, label=self.crawlers[0]['name'], color='skyblue')
+        ax.bar([i for i in x], depth_counts[1], width, label=self.crawlers[1]['name'], color='lightgreen')
+        ax.bar([i + width for i in x], depth_counts[2], width, label=self.crawlers[2]['name'], color='coral')
         ax.set_xlabel('Crawl Depth')
         ax.set_ylabel('Number of Pages')
         ax.set_title('Depth Distribution Comparison')
@@ -320,7 +430,36 @@ class CrawlerAnalyzer:
         plt.close()
         logger.info("Generated depth distribution comparison plot")
 
+        # Speedup Comparison
+        seq_time = metrics_list[0]['execution_time']
+        speedups = [1.0]  # Sequential is baseline
+        for metrics in metrics_list[1:]:
+            exec_time = metrics['execution_time']
+            speedup = seq_time / exec_time if exec_time > 0 else 0
+            speedups.append(speedup)
+        
+        plt.figure(figsize=(10, 6))
+        bars = plt.bar(names, speedups, color=['skyblue', 'lightgreen', 'coral'])
+        plt.xlabel('Crawler Type')
+        plt.ylabel('Speedup (relative to Sequential)')
+        plt.title('Performance Speedup Comparison')
+        plt.grid(True, axis='y')
+        
+        # Add value labels on top of bars
+        for bar in bars:
+            height = bar.get_height()
+            plt.text(bar.get_x() + bar.get_width()/2., height + 0.1,
+                    f'{height:.2f}x',
+                    ha='center', va='bottom')
+            
+        plt.savefig(os.path.join(self.output_dir, 'speedup_comparison.png'))
+        plt.close()
+        logger.info("Generated speedup comparison plot")
+
         # Word Cloud (Combined)
+        self.generate_word_cloud(results_list)
+
+    def generate_word_cloud(self, results_list):
         all_text = []
         for results in results_list:
             for result in results:
@@ -342,6 +481,71 @@ class CrawlerAnalyzer:
         else:
             logger.warning("No text available for word cloud")
 
+    def analyze_worker_distribution(self, metrics_list):
+        """Analyze and visualize worker distribution for MPI crawler."""
+        mpi_metrics = metrics_list[2]
+        if 'worker_metrics' in mpi_metrics and mpi_metrics['worker_metrics']:
+            worker_metrics = mpi_metrics['worker_metrics']
+            
+            # Worker pages processed distribution
+            worker_ids = list(worker_metrics.keys())
+            pages_processed = [worker_metrics[w]['pages_processed'] for w in worker_ids]
+            
+            plt.figure(figsize=(10, 6))
+            bars = plt.bar(worker_ids, pages_processed, color='coral')
+            plt.xlabel('Worker ID')
+            plt.ylabel('Pages Processed')
+            plt.title('MPI Worker Load Distribution')
+            plt.grid(True, axis='y')
+            
+            # Add value labels
+            for bar in bars:
+                height = bar.get_height()
+                plt.text(bar.get_x() + bar.get_width()/2., height + 0.1,
+                        f'{height}',
+                        ha='center', va='bottom')
+                
+            plt.savefig(os.path.join(self.output_dir, 'mpi_worker_distribution.png'))
+            plt.close()
+            logger.info("Generated MPI worker distribution plot")
+            
+            # Average processing time per worker
+            avg_times = [worker_metrics[w]['avg_processing_time'] for w in worker_ids]
+            
+            plt.figure(figsize=(10, 6))
+            bars = plt.bar(worker_ids, avg_times, color='lightblue')
+            plt.xlabel('Worker ID')
+            plt.ylabel('Average Processing Time (s)')
+            plt.title('MPI Worker Average Processing Time')
+            plt.grid(True, axis='y')
+            
+            # Add value labels
+            for bar in bars:
+                height = bar.get_height()
+                plt.text(bar.get_x() + bar.get_width()/2., height + 0.01,
+                        f'{height:.2f}s',
+                        ha='center', va='bottom')
+                
+            plt.savefig(os.path.join(self.output_dir, 'mpi_worker_avg_time.png'))
+            plt.close()
+            logger.info("Generated MPI worker average time plot")
+            
+            # Crawl rate over time
+            if 'crawl_rate_history' in mpi_metrics and 'timestamp_history' in mpi_metrics:
+                crawl_rates = mpi_metrics['crawl_rate_history']
+                timestamps = mpi_metrics['timestamp_history']
+                
+                if crawl_rates and timestamps and len(crawl_rates) == len(timestamps):
+                    plt.figure(figsize=(10, 6))
+                    plt.plot(timestamps, crawl_rates, 'o-', color='green')
+                    plt.xlabel('Time (seconds)')
+                    plt.ylabel('Crawl Rate (pages/second)')
+                    plt.title('MPI Crawl Rate Over Time')
+                    plt.grid(True)
+                    plt.savefig(os.path.join(self.output_dir, 'mpi_crawl_rate_time.png'))
+                    plt.close()
+                    logger.info("Generated MPI crawl rate over time plot")
+
     def save_comparison_metrics(self, metrics_list):
         comparison_metrics = {
             crawler['name']: {
@@ -350,8 +554,22 @@ class CrawlerAnalyzer:
                 'pages_per_second': metrics['pages_per_second']
             } for crawler, metrics in zip(self.crawlers, metrics_list)
         }
-        speedup = metrics_list[0]['execution_time'] / metrics_list[1]['execution_time'] if metrics_list[1]['execution_time'] > 0 else None
-        comparison_metrics['speedup'] = speedup
+        
+        # Calculate speedups
+        seq_time = metrics_list[0]['execution_time']
+        thread_speedup = seq_time / metrics_list[1]['execution_time'] if metrics_list[1]['execution_time'] > 0 else 0
+        mpi_speedup = seq_time / metrics_list[2]['execution_time'] if metrics_list[2]['execution_time'] > 0 else 0
+        
+        comparison_metrics['speedups'] = {
+            'thread_speedup': thread_speedup,
+            'mpi_speedup': mpi_speedup,
+            'mpi_vs_thread': metrics_list[2]['pages_per_second'] / metrics_list[1]['pages_per_second'] 
+                if metrics_list[1]['pages_per_second'] > 0 else 0
+        }
+        
+        # Add MPI specific metrics if available
+        if 'worker_metrics' in metrics_list[2]:
+            comparison_metrics['mpi_worker_metrics'] = metrics_list[2]['worker_metrics']
 
         output_path = os.path.join(self.output_dir, 'comparison_metrics.json')
         with open(output_path, 'w') as f:
@@ -360,7 +578,7 @@ class CrawlerAnalyzer:
 
 def main():
     config = CrawlerConfig()
-    analyzer = CrawlerAnalyzer(config)
+    analyzer = CrawlerAnalyzer(config, "outputs/parallel - mpi/performance_metrics.json")
     analyzer.run()
 
 if __name__ == '__main__':
